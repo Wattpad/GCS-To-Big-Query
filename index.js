@@ -107,6 +107,11 @@ exports.jsonLoad = function jsonLoad(event) {
         sourceFormat: 'NEWLINE_DELIMITED_JSON',
         schema: {
           fields: _schema
+        },
+        'timePartitioning': {
+          'type': 'DAY',
+          'field': 'EdgeStartTimestamp',
+          'requirePartitionFilter': false
         }
       };
       return table.import(fileObj, metadata);
